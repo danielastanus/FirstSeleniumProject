@@ -7,14 +7,14 @@ public class Main {
         System.out.println("Starting tests...");
 
 //        login.loginWithValidCredentials();
-//        login.loginWithInvalidCredentials();
+////        login.loginWithInvalidCredentials();
+////
+////
+        WishListTest wishListTest = new WishListTest();
+        wishListTest.addToWishList();
 //
-//
-//        WishListTest wishListTest = new WishListTest();
-//        wishListTest.addToWishList();
-
-        RegisterTest register = new RegisterTest();
-        register.registerWithValidCredentials();
+//        RegisterTest register = new RegisterTest();
+//        register.registerWithValidCredentials();
 
 
         }
