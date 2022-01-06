@@ -20,18 +20,18 @@ public class CartTest {
 
 @Test
     public void addToCartTest(){
-        WebElement accountLink = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        WebElement accountLink = driver.findElement(By.cssSelector(".skip-account"));
         accountLink.click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
+        driver.findElement(By.cssSelector("[title~= Log]")).click();
         driver.findElement(By.id("email")).sendKeys("danielaaa.stanus@mailinator.com");
         driver.findElement(By.id("pass")).sendKeys("123456");
         driver.findElement(By.id("send2")).click();
-        driver.findElement(By.cssSelector("#nav > ol > li.level0.nav-6 > a")).click();
+        driver.findElement(By.cssSelector(".nav-6")).click();
         driver.findElement(By.id("product-collection-image-412")).click();
-        driver.findElement(By.cssSelector("#swatch26 > span.swatch-label > img")).click();
+        driver.findElement(By.cssSelector("#option26")).click();
         driver.findElement(By.id("option80")).click();
-        driver.findElement(By.cssSelector("#product_addtocart_form > div.product-shop > div.product-options-bottom > div.add-to-cart > div.add-to-cart-buttons > button > span > span")).click();
-        WebElement succesTextElement = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.cart.display-single-price > ul > li > ul > li > span"));
+        driver.findElement(By.cssSelector(".add-to-cart .btn-cart")).click();
+        WebElement succesTextElement = driver.findElement(By.cssSelector(".success-msg"));
         String succesText = succesTextElement.getText();
 
     Assert.assertTrue(succesTextElement.isDisplayed());
@@ -41,19 +41,19 @@ public class CartTest {
 
     @Test
     public void emptyCart(){
-        WebElement accountLink = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        WebElement accountLink = driver.findElement(By.cssSelector(".skip-account"));
         accountLink.click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
+        driver.findElement(By.cssSelector("[title~= Log]")).click();
         driver.findElement(By.id("email")).sendKeys("danielaaa.stanus@mailinator.com");
         driver.findElement(By.id("pass")).sendKeys("123456");
         driver.findElement(By.id("send2")).click();
-        driver.findElement(By.cssSelector("#nav > ol > li.level0.nav-6 > a")).click();
+        driver.findElement(By.cssSelector(".nav-6")).click();
         driver.findElement(By.id("product-collection-image-412")).click();
-        driver.findElement(By.cssSelector("#swatch26 > span.swatch-label > img")).click();
+        driver.findElement(By.cssSelector("#option26")).click();
         driver.findElement(By.id("option80")).click();
-        driver.findElement(By.cssSelector("#product_addtocart_form > div.product-shop > div.product-options-bottom > div.add-to-cart > div.add-to-cart-buttons > button > span > span")).click();
-        driver.findElement(By.cssSelector("#empty_cart_button > span > span")).click();
-        WebElement textElement = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.page-title > h1"));
+        driver.findElement(By.cssSelector(".add-to-cart .btn-cart")).click();
+        driver.findElement(By.cssSelector("#empty_cart_button")).click();
+        WebElement textElement = driver.findElement(By.cssSelector(".page-title"));
         String text = textElement.getText();
         Assert.assertTrue(textElement.isDisplayed());
         Assert.assertEquals("SHOPPING CART IS EMPTY", text);
@@ -61,19 +61,19 @@ public class CartTest {
     }
     @Test
     public void moveToWishlist() {
-        WebElement accountLink = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        WebElement accountLink = driver.findElement(By.cssSelector(".skip-account"));
         accountLink.click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
+        driver.findElement(By.cssSelector("[title~= Log]")).click();
         driver.findElement(By.id("email")).sendKeys("danielaaa.stanus@mailinator.com");
         driver.findElement(By.id("pass")).sendKeys("123456");
         driver.findElement(By.id("send2")).click();
-        driver.findElement(By.cssSelector("#nav > ol > li.level0.nav-6 > a")).click();
+        driver.findElement(By.cssSelector(".nav-6")).click();
         driver.findElement(By.id("product-collection-image-412")).click();
-        driver.findElement(By.cssSelector("#swatch26 > span.swatch-label > img")).click();
+        driver.findElement(By.cssSelector("#option26")).click();
         driver.findElement(By.id("option80")).click();
-        driver.findElement(By.cssSelector("#product_addtocart_form > div.product-shop > div.product-options-bottom > div.add-to-cart > div.add-to-cart-buttons > button > span > span")).click();
-        driver.findElement(By.cssSelector("#shopping-cart-table > tbody > tr > td.product-cart-actions > ul > li:nth-child(2) > a")).click();
-        WebElement textElement = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.cart-empty > ul > li > ul > li > span"));
+        driver.findElement(By.cssSelector(".add-to-cart .btn-cart")).click();
+        driver.findElement(By.cssSelector(".product-cart-actions .use-ajax")).click();
+        WebElement textElement = driver.findElement(By.cssSelector(".success-msg"));
         String text = textElement.getText();
 
         Assert.assertTrue(textElement.isDisplayed());

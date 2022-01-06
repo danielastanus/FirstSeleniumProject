@@ -23,13 +23,13 @@ public class LoginTest {
 @Test
     public void loginWithValidCredentials(){
 
-        WebElement accountLink = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        WebElement accountLink = driver.findElement(By.cssSelector(".skip-account .label"));
         accountLink.click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
+        driver.findElement(By.cssSelector("[title~= Log]")).click();
         driver.findElement(By.id("email")).sendKeys("danielaaa.stanus@mailinator.com");
         driver.findElement(By.id("pass")).sendKeys("123456");
         driver.findElement(By.id("send2")).click();
-        WebElement welcomeTextElement = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col2-left-layout > div > div.col-main > div.my-account > div > div.welcome-msg > p.hello > strong"));
+        WebElement welcomeTextElement = driver.findElement(By.cssSelector(".hello"));
         String welcomeText = welcomeTextElement.getText();
 
     Assert.assertTrue(welcomeTextElement.isDisplayed());
@@ -40,18 +40,35 @@ public class LoginTest {
 @Test
     public void loginWithInvalidCredentials(){
 
-        WebElement accountLink = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        WebElement accountLink = driver.findElement(By.cssSelector(".skip-account .label"));
         accountLink.click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
+        driver.findElement(By.cssSelector("[title~= Log]")).click();
         driver.findElement(By.id("email")).sendKeys("danielaaa.stanus@mailinator.com");
         driver.findElement(By.id("pass")).sendKeys(RandomStringUtils.randomAlphabetic(7));
         driver.findElement(By.id("send2")).click();
-        WebElement welcomeTextElement = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.account-login > ul > li > ul > li > span"));
+        WebElement welcomeTextElement = driver.findElement(By.cssSelector(".error-msg"));
         String text = welcomeTextElement.getText();
 
     Assert.assertTrue(welcomeTextElement.isDisplayed());
     Assert.assertEquals("Invalid login or password.", text);
     }
+
+@Test
+    public void forgetPassword(){
+       WebElement accountLink = driver.findElement(By.cssSelector(".skip-account .label"));
+       accountLink.click();
+       driver.findElement(By.cssSelector("[title~= Log]")).click();
+       driver.findElement(By.id("email")).sendKeys("danielaaa.stanus@mailinator.com");
+       driver.findElement(By.cssSelector(".f-left")).click();
+       driver.findElement(By.cssSelector("#email_address")).sendKeys("danielaaa.stanus@mailinator.com");
+       driver.findElement(By.cssSelector(".buttons-set .button")).click();
+       WebElement textElement = driver.findElement(By.cssSelector(".success-msg"));
+       String text2 = textElement.getText();
+
+    Assert.assertTrue(textElement.isDisplayed());
+    Assert.assertEquals("If there is an account associated with danielaaa.stanus@mailinator.com you will receive an email with a link to reset your password.", text2);
+}
+
 
 @After
    public void close(){

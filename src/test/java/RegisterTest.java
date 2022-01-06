@@ -24,9 +24,9 @@ public class RegisterTest {
     public void registerWithValidCredentials(){
         RandomString randomString = new RandomString();
         String  random = randomString.nextString();
-        WebElement accountLink = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        WebElement accountLink = driver.findElement(By.cssSelector(".skip-account .label"));
         accountLink.click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li:nth-child(5) > a")).click();
+        driver.findElement(By.cssSelector(".links [title~=Register]")).click();
         driver.findElement(By.id("firstname")).sendKeys("Daniela");
         driver.findElement(By.name("middlename")).sendKeys("A");
         driver.findElement(By.id("lastname")).sendKeys("Stanus");
@@ -34,9 +34,9 @@ public class RegisterTest {
         driver.findElement(By.id("password")).sendKeys("123456");
         driver.findElement(By.cssSelector("#confirmation")).sendKeys("123456");
         driver.findElement(By.id("is_subscribed")).click();
-        WebElement registerButton = driver.findElement(By.cssSelector("#form-validate > div.buttons-set > button > span > span"));
+        WebElement registerButton = driver.findElement(By.cssSelector(".buttons-set [title~=Register]"));
         registerButton.click();
-        WebElement registerTextElement = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col2-left-layout > div > div.col-main > div.my-account > div > ul > li > ul > li > span"));
+        WebElement registerTextElement = driver.findElement(By.cssSelector(".success-msg"));
         String registerText = registerTextElement.getText();
 
         Assert.assertTrue(registerTextElement.isDisplayed());
@@ -47,9 +47,9 @@ public class RegisterTest {
     public void registerWithDifferentPass(){
         RandomString randomString = new RandomString();
         String  random = randomString.nextString();
-        WebElement accountLink = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        WebElement accountLink = driver.findElement(By.cssSelector(".skip-account .label"));
         accountLink.click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li:nth-child(5) > a")).click();
+        driver.findElement(By.cssSelector(".links [title~=Register]")).click();
         driver.findElement(By.id("firstname")).sendKeys("Daniela");
         driver.findElement(By.name("middlename")).sendKeys("A");
         driver.findElement(By.id("lastname")).sendKeys("Stanus");
@@ -57,9 +57,9 @@ public class RegisterTest {
         driver.findElement(By.id("password")).sendKeys("123456");
         driver.findElement(By.cssSelector("#confirmation")).sendKeys("1234567");
         driver.findElement(By.id("is_subscribed")).click();
-        WebElement registerButton = driver.findElement(By.cssSelector("#form-validate > div.buttons-set > button > span > span"));
+        WebElement registerButton = driver.findElement(By.cssSelector(".buttons-set [title~=Register]"));
         registerButton.click();
-        WebElement registerTextElement = driver.findElement(By.id("advice-validate-cpassword-confirmation"));
+        WebElement registerTextElement = driver.findElement(By.cssSelector(".validation-advice"));
         String registerText = registerTextElement.getText();
 
         Assert.assertTrue(registerTextElement.isDisplayed());
